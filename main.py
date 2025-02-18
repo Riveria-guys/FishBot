@@ -19,6 +19,11 @@ def send_welcome(message):
     """Отправляет приветственное сообщение пользователю."""
     bot.reply_to(message, "Привет! Я твой бот. Чем могу помочь?")
 
+@bot.message_handler(commands=['help'])
+def send_help(message):
+    """Отправляет список команд пользователю."""
+    bot.reply_to(message, "Тебе тут никто не поможет, сам разбирайся.\nВот список команд: \n/start - стартуем бота\n/help - список команд\n/msp - магический шар")
+
 @bot.message_handler(commands=['msp'])
 def magic_sphere(message):
     """Волшебный шар"""
