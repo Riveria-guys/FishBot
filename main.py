@@ -7,6 +7,12 @@ import random
 TOKEN = "8099645779:AAHlgE9Bi36Xek7RssuHrFur3zEPbIpuKP8"
 bot = telebot.TeleBot(TOKEN)
 
+bot.set_my_commands([
+    telebot.types.BotCommand("msp", "Магический шар"),
+    telebot.types.BotCommand("start", "Запуск бота"),
+    telebot.types.BotCommand("help", "Список команд"),
+])
+
 # Обработчик команд /start и /help
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
