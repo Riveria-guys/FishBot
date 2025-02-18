@@ -14,7 +14,7 @@ bot.set_my_commands([
 ])
 
 # Обработчик команд /start и /help
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=['start'])
 def send_welcome(message):
     """Отправляет приветственное сообщение пользователю."""
     bot.reply_to(message, "Привет! Я твой бот. Чем могу помочь?")
