@@ -1,9 +1,9 @@
 import telebot
 import random
 
+#Жопа
 
 # Инициализация бота с использованием токена
-# Замените 'YOUR_BOT_TOKEN' на токен вашего бота
 TOKEN = "8099645779:AAHlgE9Bi36Xek7RssuHrFur3zEPbIpuKP8"
 bot = telebot.TeleBot(TOKEN)
 
