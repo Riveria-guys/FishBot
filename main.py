@@ -13,6 +13,8 @@ bot.set_my_commands([
     telebot.types.BotCommand("help", "Список команд"),
 ])
 
+#Здесь был Максим
+
 # Обработчик команд /start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
