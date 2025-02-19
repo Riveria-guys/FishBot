@@ -3,9 +3,11 @@ import random
 import os
 from dotenv import load_dotenv
 
+# Загрузка переменных окружения из файла .env
 load_dotenv()
 
 # Инициализация бота с использованием токена
+# Присвоение токена переменной окружения BOT_TOKEN
 TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
