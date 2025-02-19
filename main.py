@@ -1,10 +1,18 @@
 import telebot
 import random
+import os
+from dotenv import load_dotenv
 
+# Загрузка переменных окружения из файла .env
+load_dotenv()
 
 # Инициализация бота с использованием токена
-TOKEN = "8099645779:AAHlgE9Bi36Xek7RssuHrFur3zEPbIpuKP8"
+# Присвоение токена переменной окружения BOT_TOKEN
+TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
+
+#Здесь был Максим
+#Здесь был Женя
 
 # Установка команд бота
 bot.set_my_commands([
@@ -13,7 +21,7 @@ bot.set_my_commands([
     telebot.types.BotCommand("help", "Список команд"),
 ])
 
-#Здесь был Максим
+
 
 # Обработчик команд /start
 @bot.message_handler(commands=['start'])
