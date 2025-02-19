@@ -13,6 +13,7 @@ bot = telebot.TeleBot(TOKEN)
 
 #Здесь был Максим
 #Здесь был Женя
+#Здесь был Денис
 
 # Установка команд бота
 bot.set_my_commands([
