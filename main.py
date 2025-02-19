@@ -1,9 +1,12 @@
 import telebot
 import random
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Инициализация бота с использованием токена
-TOKEN = "8099645779:AAHlgE9Bi36Xek7RssuHrFur3zEPbIpuKP8"
+TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
 # Установка команд бота
