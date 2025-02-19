@@ -9,6 +9,9 @@ load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
+#Здесь был Максим
+#Здесь был Женя
+
 # Установка команд бота
 bot.set_my_commands([
     telebot.types.BotCommand("msp", "Магический шар"),
@@ -16,7 +19,7 @@ bot.set_my_commands([
     telebot.types.BotCommand("help", "Список команд"),
 ])
 
-#Здесь был Максим
+
 
 # Обработчик команд /start
 @bot.message_handler(commands=['start'])
