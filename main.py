@@ -1,10 +1,40 @@
 import telebot
 import random
+import psycopg2
+from psycopg2 import OperationalError
 import os
 from dotenv import load_dotenv
 
 # Загрузка переменных окружения из файла .env
 load_dotenv()
+
+DB_CONFIG = {
+    "dbname": os.getenv("DB_NAME"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "host": os.getenv("DB_HOST"),  # IP сервера с БД (или localhost, если локально)
+    "port": os.getenv("DB_PORT"),
+}
+
+def connect_db():
+    """Создает подключение к БД и возвращает объект соединения и курсор."""
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        cursor = conn.cursor()
+        print("Подключение к БД успешно")
+        return conn, cursor
+    except OperationalError as e:
+        print(f"Ошибка подключения: {e}")
+        return None, None
+    
+
+def close_db(conn, cursor):
+    """Закрывает соединение с БД."""
+    if cursor:
+        cursor.close()
+    if conn:
+        conn.close()
+        print("Соединение закрыто")
 
 # Инициализация бота с использованием токена
 # Присвоение токена переменной окружения BOT_TOKEN
@@ -28,7 +58,13 @@ bot.set_my_commands([
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     """Отправляет приветственное сообщение пользователю."""
-    bot.reply_to(message, "Привет! Я твой бот. Чем могу помочь?")
+    # bot.reply_to(message, "Привет! Я твой бот. Чем могу помочь?")
+
+    conn, cursor = connect_db()
+    if conn:
+        cursor.execute("SELECT finnish FROM finish_phrases ORDER BY RANDOM() LIMIT 1;")
+
+    bot.reply_to(message, cursor.fetchall())
 
 # Обработчик команд /help
 @bot.message_handler(commands=['help'])
