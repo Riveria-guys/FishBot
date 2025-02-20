@@ -50,6 +50,7 @@ bot.set_my_commands([
     telebot.types.BotCommand("msp", "Магический шар"),
     telebot.types.BotCommand("start", "Запуск бота"),
     telebot.types.BotCommand("help", "Список команд"),
+    telebot.types.BotCommand("finnish", "Финские фразы"),
 ])
 
 
