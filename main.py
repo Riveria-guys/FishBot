@@ -58,19 +58,30 @@ bot.set_my_commands([
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     """Отправляет приветственное сообщение пользователю."""
-    # bot.reply_to(message, "Привет! Я твой бот. Чем могу помочь?")
+    bot.reply_to(message, "Привет! Я твой бот. Чем могу помочь?")
 
-    conn, cursor = connect_db()
-    if conn:
-        cursor.execute("SELECT finnish FROM finish_phrases ORDER BY RANDOM() LIMIT 1;")
+    # conn, cursor = connect_db()
+    # if conn:
+    #     cursor.execute("SELECT finnish FROM finish_phrases ORDER BY RANDOM() LIMIT 1;")
 
-    bot.reply_to(message, cursor.fetchall())
+    # bot.reply_to(message, cursor.fetchall())
 
 # Обработчик команд /help
 @bot.message_handler(commands=['help'])
 def send_help(message):
     """Отправляет список команд пользователю."""
     bot.reply_to(message, "Тебе тут никто не поможет, сам разбирайся.\nВот список команд: \n/start - стартуем бота\n/help - список команд\n/msp - магический шар")
+
+@bot.message_handler(commands=['finnish'])
+def finish_phrases(message):
+    """Отправляет приветственное сообщение пользователю."""
+    conn, cursor = connect_db()
+    if conn:
+        cursor.execute("SELECT finnish FROM finish_phrases ORDER BY RANDOM() LIMIT 1;")
+
+    bot.reply_to(message, cursor.fetchall())
+    
+    close_db(conn, cursor)
 
 # Обработчик команд /msp (Magic Sphere)
 @bot.message_handler(commands=['msp'])
