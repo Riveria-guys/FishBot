@@ -8,20 +8,14 @@ from dotenv import load_dotenv
 # Загрузка переменных окружения из файла .env
 load_dotenv()
 
-DB_CONFIG = {
-    "dbname": os.getenv("DB_NAME"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "host": os.getenv("DB_HOST"),  # IP сервера с БД (или localhost, если локально)
-    "port": os.getenv("DB_PORT"),
-}
+DB_URL = os.getenv("DATABASE_URL")
 
 # -----------------------------------------------------------------------------------
 
 def connect_db():
-    """Создает подключение к БД и возвращает объект соединения и курсор."""
+    """Создает подключение к БД через строку подключения и возвращает объект соединения и курсор."""
     try:
-        conn = psycopg2.connect(**DB_CONFIG)
+        conn = psycopg2.connect(DB_URL)  # Используем строку подключения напрямую
         cursor = conn.cursor()
         print("Подключение к БД успешно")
         return conn, cursor
