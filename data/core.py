@@ -1,13 +1,5 @@
-from data.database_conn import engine, get_session
-from data.models.models import User, Base
-
-
-def create_table():
-    try:
-        Base.metadata.create_all(engine)
-        print("Таблицы созданы")
-    except Exception as e:
-        print(f"Ошибка создания таблиц: {e}")
+from data.database_conn import get_session
+from data.models.models import User
 
 
 def add_user(username, chat_id):

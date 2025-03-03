@@ -1,4 +1,6 @@
-import telebot
+
+# ТУТ НИХУЯ НЕ РАБОТАЕТ Я ЕЩЕ НЕ ПЕРЕДЕЛАЛ ПОД НОВУЮ БИБЛИОТЕКУ
+
 # Обработчик команды /finnish
 @bot.message_handler(commands=['finnish'])
 def finish_phrases(message):
