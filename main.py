@@ -1,22 +1,18 @@
 import telebot
 import os
 from dotenv import load_dotenv
-
+from config.config import BOT_TOKEN
 
 
 # Загрузка переменных окружения из файла .env
 load_dotenv()
 
-# Инициализация бота с использованием токена
-TOKEN = os.getenv("BOT_TOKEN")
+# Инициализация бота с использованием токена из config 
+
+TOKEN = BOT_TOKEN
 bot = telebot.TeleBot(TOKEN)
 
-#Здесь был Максим
-#Здесь был Женя
-#Здесь был Денис
-#Здесь был Лёва
-#Здесь был Коля
-
+# Здесь были Максим, Женя , Коля , Денис и Лёва
 
 # Отображение команд внутри бота
 bot.set_my_commands([
@@ -51,4 +47,5 @@ def send_welcome(message):
 
 # Запуск бота в режиме непрерывного прослушивания сообщений
 print("Бот запущен...")
+
 bot.polling(none_stop=True)
