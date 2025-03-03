@@ -33,10 +33,8 @@ def add_user(username, chat_id):
 def get_users():
     try:
         session = get_session()
-        users = session.query(User).all()
-        for user in users:
-            print(user.id, user.username, user.chat_id)
+        user = session.query(User).first()
         session.close()
-        return users
+        return user
     except Exception as e:
         print(f"Ошибка получения пользователя: {e}")
