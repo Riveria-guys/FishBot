@@ -10,30 +10,6 @@ from data.core import add_user, get_users, create_table
 # Загрузка переменных окружения из файла .env
 load_dotenv()
 
-DB_URL = os.getenv("DATABASE_URL")
-
-# -----------------------------------------------------------------------------------
-
-# def connect_db():
-#     """Создает подключение к БД через строку подключения и возвращает объект соединения и курсор."""
-#     try:
-#         conn = psycopg2.connect(DB_URL)  # Используем строку подключения напрямую
-#         cursor = conn.cursor()
-#         print("Подключение к БД успешно")
-#         return conn, cursor
-#     except OperationalError as e:
-#         print(f"Ошибка подключения: {e}")
-#         return None, None
-    
-
-def close_db(conn, cursor):
-    """Закрывает соединение с БД."""
-    if cursor:
-        cursor.close()
-    if conn:
-        conn.close()
-        print("Соединение закрыто")
-
 # Инициализация бота с использованием токена
 TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
@@ -59,9 +35,6 @@ bot.set_my_commands([
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     """Отправляет приветственное сообщение пользователю."""
-    create_table()
-    add_user(message.from_user.username, message.chat.id)
-    get_users()
     bot.reply_to(message, "Привет! Я твой бот. Чем могу помочь?")
     
 
@@ -77,13 +50,11 @@ def send_help(message):
 @bot.message_handler(commands=['finnish'])
 def finish_phrases(message):
     """Отправляет приветственное сообщение пользователю."""
-    conn, cursor = connect_db()
-    if conn:
-        cursor.execute("SELECT finnish FROM finish_phrases ORDER BY RANDOM() LIMIT 1;")
-
-    bot.reply_to(message, cursor.fetchall())
     
-    close_db(conn, cursor)
+
+    bot.reply_to(message, "Пока не работает, но скоро будет работать")
+    
+
 
 
 # Обработчик командs /msp (Magic Sphere)
