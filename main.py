@@ -28,7 +28,11 @@ bot.set_my_commands([
 
 
 
-
+# Обработчик команды /start
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    """Отправляет приветственное сообщение пользователю."""
+    bot.reply_to(message, "Привет! Поздравляю все завелось")
 
 # Обработчик всех входящих сообщений в личке и группах
 # @bot.message_handler(func=lambda message: True)
