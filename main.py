@@ -4,7 +4,8 @@ import psycopg2
 from psycopg2 import OperationalError
 import os
 from dotenv import load_dotenv
-from data.database import connect_db
+from data.core import add_user, get_users, create_table
+
 
 # Загрузка переменных окружения из файла .env
 load_dotenv()
@@ -43,7 +44,6 @@ bot = telebot.TeleBot(TOKEN)
 #Здесь был Лёва
 #Здесь был Коля
 
-all_handlers(bot)
 
 # Отображение команд внутри бота
 bot.set_my_commands([
@@ -59,7 +59,11 @@ bot.set_my_commands([
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     """Отправляет приветственное сообщение пользователю."""
+    create_table()
+    add_user(message.from_user.username, message.chat.id)
+    get_users()
     bot.reply_to(message, "Привет! Я твой бот. Чем могу помочь?")
+    
 
 
 # Обработчик команды /help
@@ -114,8 +118,6 @@ def magic_sphere(message):
     #     bot.reply_to(message, f"Сообщение в группе: {message.text}")
     # Что бы оно нас не заебывало я закоментил что бы можно было использовать код для работы в дальнейшем
 
-
-connect_db()
 
 
 # Запуск бота в режиме непрерывного прослушивания сообщений
