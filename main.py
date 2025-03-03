@@ -1,10 +1,7 @@
 import telebot
-import random
-import psycopg2
-from psycopg2 import OperationalError
 import os
 from dotenv import load_dotenv
-from data.core import add_user, get_users, create_table
+
 
 
 # Загрузка переменных окружения из файла .env
