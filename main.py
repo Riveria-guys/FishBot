@@ -4,33 +4,11 @@ import psycopg2
 from psycopg2 import OperationalError
 import os
 from dotenv import load_dotenv
+from data.core import add_user, get_users, create_table
+
 
 # Загрузка переменных окружения из файла .env
 load_dotenv()
-
-DB_URL = os.getenv("DATABASE_URL")
-
-# -----------------------------------------------------------------------------------
-
-def connect_db():
-    """Создает подключение к БД через строку подключения и возвращает объект соединения и курсор."""
-    try:
-        conn = psycopg2.connect(DB_URL)  # Используем строку подключения напрямую
-        cursor = conn.cursor()
-        print("Подключение к БД успешно")
-        return conn, cursor
-    except OperationalError as e:
-        print(f"Ошибка подключения: {e}")
-        return None, None
-    
-
-def close_db(conn, cursor):
-    """Закрывает соединение с БД."""
-    if cursor:
-        cursor.close()
-    if conn:
-        conn.close()
-        print("Соединение закрыто")
 
 # Инициализация бота с использованием токена
 TOKEN = os.getenv("BOT_TOKEN")
@@ -42,6 +20,7 @@ bot = telebot.TeleBot(TOKEN)
 #Здесь был Лёва
 #Здесь был Коля
 
+
 # Отображение команд внутри бота
 bot.set_my_commands([
     telebot.types.BotCommand("msp", "Магический шар"),
@@ -49,7 +28,6 @@ bot.set_my_commands([
     telebot.types.BotCommand("help", "Список команд"),
     telebot.types.BotCommand("finnish", "Финские фразы"),
 ])
-
 
 
 
@@ -67,6 +45,7 @@ bot.set_my_commands([
     # elif message.chat.type in ["group", "supergroup"]:
     #     bot.reply_to(message, f"Сообщение в группе: {message.text}")
     # Что бы оно нас не заебывало я закоментил что бы можно было использовать код для работы в дальнейшем
+
 
 
 # Запуск бота в режиме непрерывного прослушивания сообщений
