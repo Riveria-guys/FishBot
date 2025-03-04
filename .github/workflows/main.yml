@@ -16,6 +16,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}          # Например, "192.168.1.100"
           username: ${{ secrets.SSH_USER }}      # Например, "ubuntu"
+          password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.SSH_KEY }}            # Приватный SSH-ключ из секретов
           port: 8022
 
