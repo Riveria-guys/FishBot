@@ -1,5 +1,6 @@
 from data.database_conn import get_session
-from data.models.models import User, finnish_phrases
+from data.models.user_mod import User
+from data.models.finnish_mod import finnish_phrases
 from sqlalchemy import func
 
 
