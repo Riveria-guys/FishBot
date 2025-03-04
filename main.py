@@ -3,12 +3,15 @@ from config.config import BOT_TOKEN
 from commands.init import register_all_handlers
 from data.models.models import Base
 from data.database_conn import engine
+from data.json_load.all_load import import_all_data
 
 # Создание таблиц в базе данных
 Base.metadata.create_all(engine)
 
-# Инициализация бота с использованием токена из config 
+# Импорт всех данных из JSON в базу данных
+import_all_data()
 
+# Инициализация бота с использованием токена из config 
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # Здесь были Максим, Женя , Коля , Денис и Лёва
@@ -19,6 +22,7 @@ bot.set_my_commands([
     telebot.types.BotCommand("start", "Запуск бота"),
     telebot.types.BotCommand("help", "Список команд"),
     telebot.types.BotCommand("init", "Инициализация пользователя"),
+    telebot.types.BotCommand("finnish", "Финские фразы"),
 ])
 
 # Регистрация всех обработчиков команд
