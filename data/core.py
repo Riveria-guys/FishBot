@@ -1,5 +1,6 @@
 from data.database_conn import get_session
-from data.models.models import User
+from data.models.models import User, finnish_phrases
+from sqlalchemy import func
 
 
 def add_user(username, chat_id, user_id):
@@ -32,3 +33,12 @@ def get_users(message):
         return user
     except Exception as e:
         print(f"Ошибка получения пользователя: {e}")
+
+def get_finnish_phrase():
+    try:
+        session = get_session()
+        phrase = session.query(finnish_phrases).order_by(func.random()).limit(1).first()
+        session.close()
+        return phrase
+    except Exception as e:
+        print(f"Ошибка получения фразы: {e}")

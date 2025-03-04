@@ -10,3 +10,10 @@ class User(Base):
     username = Column(String)
     chat_id = Column(BigInteger)
     user_id = Column(BigInteger)
+
+class finnish_phrases(Base):
+    __tablename__ = 'finnish_phrases'
+
+    id = Column(Integer, primary_key=True)
+    phrase = Column(String)
+    translation = Column(String)

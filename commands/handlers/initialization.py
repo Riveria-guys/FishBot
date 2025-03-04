@@ -1,5 +1,6 @@
 from data.core import add_user, get_users
 
+# Обработчик команды /init
 def register_init(bot):
     @bot.message_handler(commands=['init'])
     def init(message):

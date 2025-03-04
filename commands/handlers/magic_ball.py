@@ -5,7 +5,6 @@ import random
 def register_magic_sphere (bot):
     @bot.message_handler(commands=['msp'])
     def magic_sphere(message):
-        """Волшебный шар"""
         answers = [
             "Бесспорно",
             "Предрешено",
