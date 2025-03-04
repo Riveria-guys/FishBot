@@ -8,7 +8,6 @@ from data.database_conn import engine
 Base.metadata.create_all(engine)
 
 # Инициализация бота с использованием токена из config 
-
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # Здесь были Максим, Женя , Коля , Денис и Лёва
@@ -23,7 +22,6 @@ bot.set_my_commands([
 
 # Регистрация всех обработчиков команд
 register_all_handlers(bot)
-
 
 # Запуск бота в режиме непрерывного прослушивания сообщений
 print("Бот запущен...")
