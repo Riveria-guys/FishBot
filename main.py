@@ -8,6 +8,7 @@ from data.json_load.all_load import import_all_data
 # Создание таблиц в базе данных
 Base.metadata.create_all(engine)
 
+
 # Импорт всех данных из JSON в базу данных
 import_all_data()
 
@@ -27,7 +28,6 @@ bot.set_my_commands([
 
 # Регистрация всех обработчиков команд
 register_all_handlers(bot)
-
 
 # Запуск бота в режиме непрерывного прослушивания сообщений
 print("Бот запущен...")
