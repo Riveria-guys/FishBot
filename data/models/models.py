@@ -9,3 +9,4 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String)
     chat_id = Column(BigInteger)
+    user_id = Column(BigInteger)
