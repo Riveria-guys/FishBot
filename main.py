@@ -1,5 +1,7 @@
 import logging
-from config import config2
+from loggers import setup_logging
+
+setup_logging()
 logger = logging.getLogger("my_logger")
 
 import telebot
@@ -8,6 +10,9 @@ from commands.init import register_all_handlers
 from data.models.models import Base
 from data.database_conn import engine
 from data.json_load.all_load import import_all_data
+
+
+logging.info("Бот запущен...")
 
 # Создание таблиц в базе данных
 Base.metadata.create_all(engine)

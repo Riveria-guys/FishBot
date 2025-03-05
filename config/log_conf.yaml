@@ -11,6 +11,7 @@ handlers:
     filename: logs/logs.log
     maxBytes: 1048576  # 1 MB
     backupCount: 3  # Хранить до 3 архивных логов
+    encoding: utf8
 
 
 loggers:
