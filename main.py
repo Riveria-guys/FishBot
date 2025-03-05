@@ -1,6 +1,6 @@
 import logging
 from config import config2
-logger = logging.getLogger("logging")
+logger = logging.getLogger("my_logger")
 
 import telebot
 from config.config import BOT_TOKEN
