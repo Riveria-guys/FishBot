@@ -1,3 +1,7 @@
+import logging
+from config import config2
+logger = logging.getLogger("logging")
+
 import telebot
 from config.config import BOT_TOKEN
 from commands.init import register_all_handlers
@@ -31,5 +35,6 @@ register_all_handlers(bot)
 
 # Запуск бота в режиме непрерывного прослушивания сообщений
 print("Бот запущен...")
+
 
 bot.polling(none_stop=True)
