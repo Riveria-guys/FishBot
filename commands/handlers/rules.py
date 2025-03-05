@@ -1,18 +1,14 @@
-from telegram import Update
-from telegram.ext import CallbackContext
+import telebot
+from config import TOKEN  # Импортируем токен
 
-rules_dict = {}
+bot = telebot.TeleBot(TOKEN)  # Создаем объект бота
 
-def rules(update: Update, context: CallbackContext) -> None:
-    chat_id = update.effective_chat.id
-    rules_text = rules_dict.get(chat_id, "Правила не установлены.")
-    update.message.reply_text(rules_text)
+# Обработчик для команды /rules
+@bot.message_handler(commands=['rules'])
+def rules(message):
+    bot.send_message(message.chat.id, "These are the group rules...")
 
-def add_rules(update: Update, context: CallbackContext) -> None:
-    chat_id = update.effective_chat.id
-    new_rules = ' '.join(context.args)
-    if new_rules:
-        rules_dict[chat_id] = new_rules
-        update.message.reply_text(f"Правила обновлены: {new_rules}")
-    else:
-        update.message.reply_text("Введите правила для добавления.")
+# Обработчик для команды /addrules
+@bot.message_handler(commands=['addrules'])
+def add_rules(message):
+    bot.send_message(message.chat.id, "Adding new rules...")
