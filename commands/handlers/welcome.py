@@ -18,7 +18,7 @@ def register_welcome(bot):
 
         # Генерируем CAPTCHA
             captcha_text = str(random.randint(1000, 9999))
-            image = ImageCaptcha()
+            image = ImageCaptcha(captcha_text)
             image_path = f"captcha_{user_id}.png"
             image.write(captcha_text, image_path)
 
@@ -32,8 +32,7 @@ def register_welcome(bot):
             )
 
           # Отправляем
-            with open(image_path, "rb") as captcha_image:
-                bot.send_photo(chat_id, captcha_image, caption=f"@{new_member.username}, введи код с картинки, чтобы подтвердить, что ты не бот.")
+            bot.send_photo(chat_id, open(image_path, 'rb'), caption=f"@{new_member.username}, введи код с картинки, чтобы подтвердить, что ты не бот.")
 
             # Сохраняем ожидаемый ответ + счётчик попыток
             captcha_dict[user_id] = {"text": captcha_text, "chat_id": chat_id, "attempts": 0}
