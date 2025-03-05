@@ -55,7 +55,7 @@ def register_welcome(bot):
                 can_send_other_messages=True,
                 can_add_web_page_previews=True
             )
-            bot.send_message(chat_id, f"@{message.from_user.username}, добро пожаловать в группу! ✅")
+            bot.send_message(chat_id, f"@{message.from_user.username}, добро пожаловать в группу! ✅ ")
             del captcha_dict[user_id]  # Убираем из списка
         else:
             captcha_dict[user_id]["attempts"] += 1  # Увеличиваем количество попыток
