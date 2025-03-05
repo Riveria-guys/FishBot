@@ -13,7 +13,6 @@ def register_start(bot):
         logging.exception(err)
 
 
-
 # Обработчик команды /help
 def register_help(bot):
     try:
