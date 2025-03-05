@@ -4,7 +4,7 @@ from config.config import DATABASE_URL
 
 engine_url = DATABASE_URL
 
-engine = create_engine(engine_url, echo=False)
+engine = create_engine(engine_url, echo=True)
 
 Session = sessionmaker(bind=engine)
 
