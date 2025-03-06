@@ -45,4 +45,4 @@ def register_warning(bot):
                                 "`/warn rm @user all|last|N` – удалить\n"
                                 "`/warn list [@user]` – список")
 
-    bot.polling(none_stop=True)
+

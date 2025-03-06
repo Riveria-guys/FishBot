@@ -33,6 +33,7 @@ bot.set_my_commands([
     telebot.types.BotCommand("help", "Список команд"),
     telebot.types.BotCommand("init", "Инициализация пользователя"),
     telebot.types.BotCommand("finnish", "Финские фразы"),
+    telebot.types.BotCommand("warp", "предупреждения"),
 ])
 
 # Регистрация всех обработчиков команд
