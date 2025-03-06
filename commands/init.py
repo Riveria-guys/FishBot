@@ -3,6 +3,7 @@ from commands.handlers.magic_ball import register_magic_sphere
 from commands.handlers.initialization import register_init
 from commands.handlers.finnish import register_finnish_phrases
 from commands.handlers.welcome import register_welcome
+from commands.handlers.warning import register_warning
 
 
 
@@ -13,4 +14,5 @@ def register_all_handlers(bot):
     register_init(bot)
     register_finnish_phrases(bot)
     register_welcome(bot)
+    register_warning(bot)
 
