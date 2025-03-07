@@ -1,3 +1,4 @@
+import logging
 from data.sql_functions import get_finnish_phrase
 
 
