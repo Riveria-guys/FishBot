@@ -15,6 +15,7 @@ from data.json_load.all_load import import_all_data
 logging.info("Бот запущен...")
 
 # Создание таблиц в базе данных
+
 Base.metadata.create_all(engine)
 
 

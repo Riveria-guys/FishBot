@@ -11,6 +11,7 @@ def register_start(bot):
             bot.reply_to(message, "Привет! Я твой бот. Чем могу помочь?")
     except Exception as err:
         logging.exception(err)
+        logging.error("Ошибка при регистрации обработчика команды /start")
 
 
 # Обработчик команды /help
@@ -22,4 +23,5 @@ def register_help(bot):
             bot.reply_to(message, "Тебе тут никто не поможет, сам разбирайся.\nВот список команд: \n/start - стартуем бота\n/help - список команд\n/msp - магический шар")
     except Exception as err:
         logging.exception(err)
+        logging.error("Ошибка при регистрации обработчика команды /help")
         
