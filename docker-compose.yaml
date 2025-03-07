@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy  # Ждем, пока PostgreSQL будет готов
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://user:password@db:5432/mydatabase
+    env_file:
+      - .env
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:   # Добавляем проверку работоспособности базы
+      test: ["CMD", "pg_isready", "-U", "user", "-d", "mydatabase"]
+      interval: 5s
+      retries: 5
+      start_period: 10s  # Даем время на старт
+
+  portainer:
+    image: portainer/portainer-ce
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+
+volumes:
+  pg_data:
+  portainer_data:
