@@ -22,3 +22,4 @@ def register_magic_sphere (bot):
             bot.reply_to(message, f"🎱 {random.choice(answers)}")
     except Exception as err:
         logging.exception(err)
+        logging.error("Ошибка при регистрации обработчика команды /msp")

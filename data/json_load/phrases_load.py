@@ -1,4 +1,5 @@
 import json
+import logging
 from data.database_conn import get_session
 from data.models.finnish_mod import finnish_phrases
 
@@ -24,4 +25,5 @@ def import_phrases_from_json():
         session.commit()
         session.close()    
     except Exception as e:
-        print(f"Ошибка при импорте фраз из JSON: {e}")
+        logging.exception(e)
+        logging.error("Ошибка при импорте фраз из JSON")

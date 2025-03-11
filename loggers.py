@@ -11,4 +11,3 @@ def setup_logging():
             logging.config.dictConfig(config)
     except Exception as err:
         print(err)
-        
