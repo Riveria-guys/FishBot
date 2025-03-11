@@ -1,5 +1,5 @@
 import logging
-from data.sql_functions import get_finnish_phrase
+from data.sql_functions.phrase_table import get_finnish_phrase
 
 
 # Обработчик команды /finnish

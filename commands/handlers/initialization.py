@@ -1,5 +1,5 @@
 import logging
-from data.sql_functions import add_user
+from data.sql_functions.user_table import add_user
 
 # Обработчик команды /init
 def register_init(bot):

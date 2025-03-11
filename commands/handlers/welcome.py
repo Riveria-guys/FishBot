@@ -33,7 +33,7 @@ def remove_restrictions(bot, chat_id, user_id):
         can_add_web_page_previews=True
     )
 
-def kick_user(bot, chat_id, user_id):
+def kick_user(bot, chat_id, user_id, message):
     try:
         # Кикаем пользователя
         bot.kick_chat_member(chat_id, user_id)
@@ -45,7 +45,7 @@ def kick_user(bot, chat_id, user_id):
 
 
 def register_welcome(bot):
-    @bot.message_handler(content_types=['new_chat_members'])
+    @bot.message_handler(content_types=['new_chat_members'])  #content_types=['new_chat_members']
     def welcome(message):
         for new_member in message.new_chat_members:
 
@@ -79,7 +79,7 @@ def register_welcome(bot):
             captcha_dict[user_id]["attempts"] += 1  # Увеличиваем количество попыток
             if captcha_dict[user_id]["attempts"] >= 2:
 
-                kick_user(bot, chat_id, user_id)
+                kick_user(bot, chat_id, user_id, message)
                 del captcha_dict[user_id]  # Убираем пользователя из списка
             else:
                 bot.send_message(chat_id, f"❌ Неверная каптча! У тебя осталась 1 попытка.")
